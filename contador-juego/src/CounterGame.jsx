@@ -1,4 +1,5 @@
 import { useReducer, useRef, useCallback, useEffect } from 'react'
+import './CounterGame.css'
 
 // Cargar estado inicial desde localStorage
 const loadInitialState = () => {
@@ -70,17 +71,17 @@ export default function CounterGame () {
   }, [])
 
   return (
-    <div style={{ fontFamily: 'sans-serif', padding: '20px' }}>
-      <h2>Contador: {state.count}</h2>
-      <div style={{ marginBottom: '10px' }}>
+    <div className='counter-container'>
+      <h2 className='counter-title'>Contador: {state.count}</h2>
+      <div className='counter-buttons'>
         <button ref={incrementBtnRef} onClick={handleIncrement}>+</button>
         <button onClick={handleDecrement}>-</button>
         <button onClick={handleReset}>Reset</button>
         <button onClick={handleUndo} disabled={state.history.length === 0}>Deshacer</button>
       </div>
 
-      <h3>Historial:</h3>
-      <ul>
+      <h3 className='counter-history-title'>Historial:</h3>
+      <ul className='counter-history-list'>
         {state.history.map((entry, index) => (
           <li key={index}>{entry}</li>
         ))}
